@@ -1,4 +1,6 @@
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from gensim.models import KeyedVectors
 
 class FeatureExtractor():
     def __init__(self):
@@ -11,12 +13,20 @@ class FeatureExtractor():
             temp_df['features'] = temp_df['features'] + temp_df[cols[i+1]]
         return temp_df
 
-    def w2v_fit(self, df: pd.DataFrame, feature_col: str):
+    def untokenize(self, df: pd.DataFrame, cols: list):
         temp_df = df.copy()
-        return model, model_vocab
-    
-    def w2v_transform(self, df: pd.DataFrame, col: str, w2v_model):
-        temp_df = df.copy()
-
+        for col in cols:
+            temp_df[col] = temp_df[col].apply(lambda x: ' '.join(word for word in x))
         return temp_df
-    
+
+    class Tfidf(TfidfVectorizer):
+        def __init__(self):
+            super().__init__()
+        
+
+    class W2V():
+        def __init__(self):
+            pass
+
+        def load_pretrained_model():
+            pass

@@ -114,6 +114,7 @@ class Prep:
         6 = stemming
         7 = lemmatize
         8 = anonymize
+        9 = tokenize
 
         Returns: 
         temp_df = pandas DataFrame
